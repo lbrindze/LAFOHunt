@@ -3,6 +3,7 @@ from instagram import client
 from tokens import users as USERS
 
 from scores import *
+from time import sleep
 
 app = Flask(__name__)
 app.debug=True
@@ -64,6 +65,7 @@ def score(tag_name):
         recent_, next_ = api.tag_recent_media(tag_name=tag_name,
                                                    count=10)
         recent_media+=(recent_)
+        sleep(1)
 
     scores = Scores.consume_media(recent_media)
 
