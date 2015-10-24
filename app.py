@@ -13,8 +13,8 @@ app.secret_key = '5yJ28O3rDrJvrDz3FFlAtoCMnWxkUQuAVAUxgc'
 CLIENT_ID = '722a889e097a45c6837cb0b4acf5eedc'
 CLIENT_SECRET = '58a95fd929554034ae0285273f1575f2'
 
-WEBSITE_URL = 'http://localhost:8000'
-REDIRECT_URL = 'http://localhost:8000/redirect'
+WEBSITE_URL = 'http://107.170.240.42:8080'
+REDIRECT_URL = 'http://107.170.240.42:8080/redirect'
 
 ADMIN = 'losangelesfieldoffice'
 ###################
@@ -74,6 +74,6 @@ def score(tag_name):
     return ''.join((score_total, '<br>', score_panel))
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(port=8080)
 
 
