@@ -59,17 +59,23 @@ def score(tag_name):
     api = client.InstagramAPI(access_token=access_token,
                        client_secret=CLIENT_SECRET)
 
-    next_ = True
     recent_media = []
+    recent_, next_ = api.tag_recent_media(tag_name=tag_name,
+                                                   count=100)
+
+
     while next_:
         recent_, next_ = api.tag_recent_media(tag_name=tag_name,
-                                                   count=10)
+                                              with_next_url=next_,
+                                                   count=100)
+        print len(recent_), "media added"
+        print recent_, next_
         recent_media+=(recent_)
         sleep(1)
 
     scores = Scores.consume_media(recent_media)
 
-    score_total = scores.calculate_winner()
+    score_total = '' #scores.calculate_winner()
     score_panel = ''.join([unicode(team_score) for _, team_score in scores.teams.items()])
     return ''.join((score_total, '<br>', score_panel))
 
